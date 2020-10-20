@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="推荐内容: http:&#x2F;&#x2F;jvmmemory.com&#x2F; https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;technotes&#x2F;tools&#x2F;unix&#x2F;java.html#BABDJJFI JVM  Paramters声明：本文基于JDK1.8所做说明 JVM参数 共分为三种：  标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容，例如(java –hel">
+    <meta name="description" content="推荐内容: http:&#x2F;&#x2F;jvmmemory.com&#x2F; https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;technotes&#x2F;tools&#x2F;unix&#x2F;java.html#BABDJJFI JVM  Paramters 声明：本文基于JDK1.8所做说明 JVM参数 共分为三种：  标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容，例如(java --h">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM Parameters">
 <meta property="og:url" content="https://invincibled.github.io/2020/08/10/JVM%20Parameters/index.html">
 <meta property="og:site_name" content="果哥分享">
-<meta property="og:description" content="推荐内容: http:&#x2F;&#x2F;jvmmemory.com&#x2F; https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;technotes&#x2F;tools&#x2F;unix&#x2F;java.html#BABDJJFI JVM  Paramters声明：本文基于JDK1.8所做说明 JVM参数 共分为三种：  标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容，例如(java –hel">
+<meta property="og:description" content="推荐内容: http:&#x2F;&#x2F;jvmmemory.com&#x2F; https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;technotes&#x2F;tools&#x2F;unix&#x2F;java.html#BABDJJFI JVM  Paramters 声明：本文基于JDK1.8所做说明 JVM参数 共分为三种：  标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容，例如(java --h">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-10T00:00:00.000Z">
 <meta property="article:modified_time" content="2020-08-10T00:00:00.000Z">
@@ -107,7 +107,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM-Paramters"><span class="toc-number">1.</span> <span class="toc-text">JVM  Paramters</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Standard-Options"><span class="toc-number">1.1.</span> <span class="toc-text">Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-Standard-Options"><span class="toc-number">1.2.</span> <span class="toc-text">Non-Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Runtime-Options"><span class="toc-number">1.3.</span> <span class="toc-text">Advanced Runtime Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-JIT-Compiler-Options"><span class="toc-number">1.4.</span> <span class="toc-text">Advanced JIT Compiler Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Serviceability-Options"><span class="toc-number">1.5.</span> <span class="toc-text">Advanced Serviceability Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Garbage-Collection-Options"><span class="toc-number">1.6.</span> <span class="toc-text">Advanced Garbage Collection Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deprecated-and-Removed-Options"><span class="toc-number">1.7.</span> <span class="toc-text">Deprecated and Removed Options</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">JVM  Paramters</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Standard-Options"><span class="toc-number">1.1.</span> <span class="toc-text">Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-Standard-Options"><span class="toc-number">1.2.</span> <span class="toc-text">Non-Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Runtime-Options"><span class="toc-number">1.3.</span> <span class="toc-text">Advanced Runtime Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-JIT-Compiler-Options"><span class="toc-number">1.4.</span> <span class="toc-text">Advanced JIT Compiler Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Serviceability-Options"><span class="toc-number">1.5.</span> <span class="toc-text">Advanced Serviceability Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Garbage-Collection-Options"><span class="toc-number">1.6.</span> <span class="toc-text">Advanced Garbage Collection Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deprecated-and-Removed-Options"><span class="toc-number">1.7.</span> <span class="toc-text">Deprecated and Removed Options</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -149,30 +149,38 @@
     <p>推荐内容:</p>
 <p><a target="_blank" rel="noopener" href="http://jvmmemory.com/">http://jvmmemory.com/</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html#BABDJJFI">https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html#BABDJJFI</a></p>
-<h1 id="JVM-Paramters"><a href="#JVM-Paramters" class="headerlink" title="JVM  Paramters"></a>JVM  Paramters</h1><p><strong>声明：本文基于JDK1.8所做说明</strong></p>
+<h1>JVM  Paramters</h1>
+<p><strong>声明：本文基于JDK1.8所做说明</strong></p>
 <p>JVM参数 共分为三种：</p>
 <ul>
-<li>标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容，例如(java –help)</li>
+<li>标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容，例如(java --help)</li>
 <li>非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容，例如（java -X)</li>
-<li>非Stable参数（-XX），此类参数各个jvm实现会有所不同，这些都是不稳定的并且不推荐在生产环境中使用。将来可能会随时取消，需要慎重使用；上都被实现），而且如果在新版本有什么改动也不会发布通知。<br>对响应时间要求很高的系统来说，良好掌握JVM关于GC调优的参数是很重要的。比如一个高流量地延迟的电子交易平台，他要求的响应时间都是毫秒级的。要获得适合的参数组合需要大量的分析和不断的尝试，更依赖于交易系统的特性。</li>
+<li>非Stable参数（-XX），此类参数各个jvm实现会有所不同，这些都是不稳定的并且不推荐在生产环境中使用。将来可能会随时取消，需要慎重使用；上都被实现），而且如果在新版本有什么改动也不会发布通知。<br>
+对响应时间要求很高的系统来说，良好掌握JVM关于GC调优的参数是很重要的。比如一个高流量地延迟的电子交易平台，他要求的响应时间都是毫秒级的。要获得适合的参数组合需要大量的分析和不断的尝试，更依赖于交易系统的特性。</li>
 </ul>
 <p>关于JVM选项的几点：</p>
 <ol>
-<li><p>布尔型参数选项：-XX:+ 打开， -XX:- 关闭。（比如-XX:+PrintGCDetails）</p>
+<li>
+<p>布尔型参数选项：-XX:+ 打开， -XX:- 关闭。（比如-XX:+PrintGCDetails）</p>
 </li>
-<li><p>数字型参数选项通过-XX:=设定。数字可以是m/M(兆字节)，k/K(千字节)，g/G(G字节)。<br>比如：32K表示32768字节。（比如-XX:HeapDumpPath=./java_pid.hprof）</p>
+<li>
+<p>数字型参数选项通过-XX:=设定。数字可以是m/M(兆字节)，k/K(千字节)，g/G(G字节)。<br>
+比如：32K表示32768字节。（比如-XX:HeapDumpPath=./java_pid.hprof）</p>
 </li>
-<li><p>字符行参数选项通过-XX:=设定，通常用来指定一个文件，路径，或者一个命令列表。（比如-XX:+PrintGCDetails）如果你想查看当前应用使用的JVM参数，你可以使用：ManagementFactory.getRuntimeMXBean().getInputArguments()。</p>
+<li>
+<p>字符行参数选项通过-XX:=设定，通常用来指定一个文件，路径，或者一个命令列表。（比如-XX:+PrintGCDetails）如果你想查看当前应用使用的JVM参数，你可以使用：ManagementFactory.getRuntimeMXBean().getInputArguments()。</p>
 </li>
 </ol>
-<h2 id="Standard-Options"><a href="#Standard-Options" class="headerlink" title="Standard Options"></a>Standard Options</h2><table>
+<h2 id="Standard-Options">Standard Options</h2>
+<table>
 <thead>
 <tr>
 <th>Option and Default Value</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-agentlib:<em>libname</em>[=<em>options</em>]</td>
 <td></td>
 </tr>
@@ -185,7 +193,7 @@
 <td></td>
 </tr>
 <tr>
-<td>-Dproperty**<em>=**</em>value</td>
+<td>-Dproperty***=***value</td>
 <td></td>
 </tr>
 <tr>
@@ -280,15 +288,18 @@
 <td>-version:release</td>
 <td></td>
 </tr>
-</tbody></table>
-<h2 id="Non-Standard-Options"><a href="#Non-Standard-Options" class="headerlink" title="Non-Standard Options"></a>Non-Standard Options</h2><table>
+</tbody>
+</table>
+<h2 id="Non-Standard-Options">Non-Standard Options</h2>
+<table>
 <thead>
 <tr>
 <th>Option and Default Value</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-X</td>
 <td></td>
 </tr>
@@ -392,15 +403,18 @@
 <td>-Xverify:mode</td>
 <td></td>
 </tr>
-</tbody></table>
-<h2 id="Advanced-Runtime-Options"><a href="#Advanced-Runtime-Options" class="headerlink" title="Advanced Runtime Options"></a>Advanced Runtime Options</h2><table>
+</tbody>
+</table>
+<h2 id="Advanced-Runtime-Options">Advanced Runtime Options</h2>
+<table>
 <thead>
 <tr>
 <th>Option and Default Value</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-XX:+CheckEndorsedAndExtDirs</td>
 <td></td>
 </tr>
@@ -572,15 +586,18 @@
 <td>-XX:+AllowUserSignalHandlers</td>
 <td></td>
 </tr>
-</tbody></table>
-<h2 id="Advanced-JIT-Compiler-Options"><a href="#Advanced-JIT-Compiler-Options" class="headerlink" title="Advanced JIT Compiler Options"></a>Advanced JIT Compiler Options</h2><table>
+</tbody>
+</table>
+<h2 id="Advanced-JIT-Compiler-Options">Advanced JIT Compiler Options</h2>
+<table>
 <thead>
 <tr>
 <th>Option and Default Value</th>
 <th>Descritpion</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-XX:+AggressiveOpts</td>
 <td></td>
 </tr>
@@ -744,15 +761,18 @@
 <td>-XX:+UseSuperWord</td>
 <td></td>
 </tr>
-</tbody></table>
-<h2 id="Advanced-Serviceability-Options"><a href="#Advanced-Serviceability-Options" class="headerlink" title="Advanced Serviceability Options"></a>Advanced Serviceability Options</h2><table>
+</tbody>
+</table>
+<h2 id="Advanced-Serviceability-Options">Advanced Serviceability Options</h2>
+<table>
 <thead>
 <tr>
 <th>Option and Default Value</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-XX:+ExtendedDTraceProbes</td>
 <td></td>
 </tr>
@@ -780,15 +800,18 @@
 <td>-XX:+UnlockDiagnosticVMOptions</td>
 <td></td>
 </tr>
-</tbody></table>
-<h2 id="Advanced-Garbage-Collection-Options"><a href="#Advanced-Garbage-Collection-Options" class="headerlink" title="Advanced Garbage Collection Options"></a>Advanced Garbage Collection Options</h2><table>
+</tbody>
+</table>
+<h2 id="Advanced-Garbage-Collection-Options">Advanced Garbage Collection Options</h2>
+<table>
 <thead>
 <tr>
 <th>Option and Default Value</th>
 <th>Description</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-XX:ActiveProcessorCount=x</td>
 <td></td>
 </tr>
@@ -1036,15 +1059,18 @@
 <td>-XX:+UseTLAB</td>
 <td></td>
 </tr>
-</tbody></table>
-<h2 id="Deprecated-and-Removed-Options"><a href="#Deprecated-and-Removed-Options" class="headerlink" title="Deprecated and Removed Options"></a>Deprecated and Removed Options</h2><table>
+</tbody>
+</table>
+<h2 id="Deprecated-and-Removed-Options">Deprecated and Removed Options</h2>
+<table>
 <thead>
 <tr>
 <th>-Xincgc</th>
 <th></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-Xrunlibname</td>
 <td></td>
 </tr>
@@ -1092,7 +1118,8 @@
 <td>-XX:+UseStringCache</td>
 <td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>随时更新</p>
 
   </div>
@@ -1119,7 +1146,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM-Paramters"><span class="toc-number">1.</span> <span class="toc-text">JVM  Paramters</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Standard-Options"><span class="toc-number">1.1.</span> <span class="toc-text">Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-Standard-Options"><span class="toc-number">1.2.</span> <span class="toc-text">Non-Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Runtime-Options"><span class="toc-number">1.3.</span> <span class="toc-text">Advanced Runtime Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-JIT-Compiler-Options"><span class="toc-number">1.4.</span> <span class="toc-text">Advanced JIT Compiler Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Serviceability-Options"><span class="toc-number">1.5.</span> <span class="toc-text">Advanced Serviceability Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Garbage-Collection-Options"><span class="toc-number">1.6.</span> <span class="toc-text">Advanced Garbage Collection Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deprecated-and-Removed-Options"><span class="toc-number">1.7.</span> <span class="toc-text">Deprecated and Removed Options</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">JVM  Paramters</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Standard-Options"><span class="toc-number">1.1.</span> <span class="toc-text">Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-Standard-Options"><span class="toc-number">1.2.</span> <span class="toc-text">Non-Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Runtime-Options"><span class="toc-number">1.3.</span> <span class="toc-text">Advanced Runtime Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-JIT-Compiler-Options"><span class="toc-number">1.4.</span> <span class="toc-text">Advanced JIT Compiler Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Serviceability-Options"><span class="toc-number">1.5.</span> <span class="toc-text">Advanced Serviceability Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Garbage-Collection-Options"><span class="toc-number">1.6.</span> <span class="toc-text">Advanced Garbage Collection Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deprecated-and-Removed-Options"><span class="toc-number">1.7.</span> <span class="toc-text">Deprecated and Removed Options</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
