@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="推荐内容: http:&#x2F;&#x2F;jvmmemory.com&#x2F; https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;technotes&#x2F;tools&#x2F;unix&#x2F;java.html#BABDJJFI JVM  Paramters声明：本文基于JDK1.8所做说明 JVM参数 共分为三种：  标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容，例如(java –hel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM Parameters">
+<meta property="og:url" content="https://invincibled.github.io/2020/08/10/JVM%20Parameters/index.html">
+<meta property="og:site_name" content="果哥分享">
+<meta property="og:description" content="推荐内容: http:&#x2F;&#x2F;jvmmemory.com&#x2F; https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;technotes&#x2F;tools&#x2F;unix&#x2F;java.html#BABDJJFI JVM  Paramters声明：本文基于JDK1.8所做说明 JVM参数 共分为三种：  标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容，例如(java –hel">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-10T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-10T00:00:00.000Z">
+<meta property="article:author" content="Invincibled">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>JVM Parameters</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/08/10/%E5%89%AF%E4%B8%9A/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/08/09/Chrome%E6%8F%92%E4%BB%B6/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://invincibled.github.io/2020/08/10/JVM%20Parameters/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&text=JVM Parameters"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&title=JVM Parameters"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&is_video=false&description=JVM Parameters"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JVM Parameters&body=Check out this article: https://invincibled.github.io/2020/08/10/JVM%20Parameters/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&title=JVM Parameters"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&title=JVM Parameters"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&title=JVM Parameters"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&title=JVM Parameters"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&name=JVM Parameters&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&t=JVM Parameters"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM-Paramters"><span class="toc-number">1.</span> <span class="toc-text">JVM  Paramters</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Standard-Options"><span class="toc-number">1.1.</span> <span class="toc-text">Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-Standard-Options"><span class="toc-number">1.2.</span> <span class="toc-text">Non-Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Runtime-Options"><span class="toc-number">1.3.</span> <span class="toc-text">Advanced Runtime Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-JIT-Compiler-Options"><span class="toc-number">1.4.</span> <span class="toc-text">Advanced JIT Compiler Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Serviceability-Options"><span class="toc-number">1.5.</span> <span class="toc-text">Advanced Serviceability Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Garbage-Collection-Options"><span class="toc-number">1.6.</span> <span class="toc-text">Advanced Garbage Collection Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deprecated-and-Removed-Options"><span class="toc-number">1.7.</span> <span class="toc-text">Deprecated and Removed Options</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        JVM Parameters
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">果哥分享</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-08-10T00:00:00.000Z" itemprop="datePublished">2020-08-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>推荐内容:</p>
+<p><a target="_blank" rel="noopener" href="http://jvmmemory.com/">http://jvmmemory.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html#BABDJJFI">https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html#BABDJJFI</a></p>
+<h1 id="JVM-Paramters"><a href="#JVM-Paramters" class="headerlink" title="JVM  Paramters"></a>JVM  Paramters</h1><p><strong>声明：本文基于JDK1.8所做说明</strong></p>
+<p>JVM参数 共分为三种：</p>
+<ul>
+<li>标准参数（-），所有的JVM实现都必须实现这些参数的功能，而且向后兼容，例如(java –help)</li>
+<li>非标准参数（-X），默认jvm实现这些参数的功能，但是并不保证所有jvm实现都满足，且不保证向后兼容，例如（java -X)</li>
+<li>非Stable参数（-XX），此类参数各个jvm实现会有所不同，这些都是不稳定的并且不推荐在生产环境中使用。将来可能会随时取消，需要慎重使用；上都被实现），而且如果在新版本有什么改动也不会发布通知。<br>对响应时间要求很高的系统来说，良好掌握JVM关于GC调优的参数是很重要的。比如一个高流量地延迟的电子交易平台，他要求的响应时间都是毫秒级的。要获得适合的参数组合需要大量的分析和不断的尝试，更依赖于交易系统的特性。</li>
+</ul>
+<p>关于JVM选项的几点：</p>
+<ol>
+<li><p>布尔型参数选项：-XX:+ 打开， -XX:- 关闭。（比如-XX:+PrintGCDetails）</p>
+</li>
+<li><p>数字型参数选项通过-XX:=设定。数字可以是m/M(兆字节)，k/K(千字节)，g/G(G字节)。<br>比如：32K表示32768字节。（比如-XX:HeapDumpPath=./java_pid.hprof）</p>
+</li>
+<li><p>字符行参数选项通过-XX:=设定，通常用来指定一个文件，路径，或者一个命令列表。（比如-XX:+PrintGCDetails）如果你想查看当前应用使用的JVM参数，你可以使用：ManagementFactory.getRuntimeMXBean().getInputArguments()。</p>
+</li>
+</ol>
+<h2 id="Standard-Options"><a href="#Standard-Options" class="headerlink" title="Standard Options"></a>Standard Options</h2><table>
+<thead>
+<tr>
+<th>Option and Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-agentlib:<em>libname</em>[=<em>options</em>]</td>
+<td></td>
+</tr>
+<tr>
+<td>-agentpath:pathname[=options]</td>
+<td></td>
+</tr>
+<tr>
+<td>-client</td>
+<td></td>
+</tr>
+<tr>
+<td>-Dproperty**<em>=**</em>value</td>
+<td></td>
+</tr>
+<tr>
+<td>-d32</td>
+<td></td>
+</tr>
+<tr>
+<td>-d64</td>
+<td></td>
+</tr>
+<tr>
+<td>-disableassertions[:[packagename]…[:classname]</td>
+<td></td>
+</tr>
+<tr>
+<td>-da[:[packagename]…[:classname]</td>
+<td></td>
+</tr>
+<tr>
+<td>-disablesystemassertions</td>
+<td></td>
+</tr>
+<tr>
+<td>-dsa</td>
+<td></td>
+</tr>
+<tr>
+<td>-enableassertions[:[packagename]…[:classname]</td>
+<td></td>
+</tr>
+<tr>
+<td>-ea[:[packagename]…[:classname]</td>
+<td></td>
+</tr>
+<tr>
+<td>-enablesystemassertions</td>
+<td></td>
+</tr>
+<tr>
+<td>-esa</td>
+<td></td>
+</tr>
+<tr>
+<td>-help</td>
+<td></td>
+</tr>
+<tr>
+<td>-jar filename</td>
+<td></td>
+</tr>
+<tr>
+<td>-javaagent:jarpath[=options]</td>
+<td></td>
+</tr>
+<tr>
+<td>-jre-restrict-search</td>
+<td></td>
+</tr>
+<tr>
+<td>-no-jre-restrict-search</td>
+<td></td>
+</tr>
+<tr>
+<td>-server</td>
+<td></td>
+</tr>
+<tr>
+<td>-showversion</td>
+<td></td>
+</tr>
+<tr>
+<td>-splash:imgname</td>
+<td></td>
+</tr>
+<tr>
+<td>-verbose:class</td>
+<td></td>
+</tr>
+<tr>
+<td>-verbose:gc</td>
+<td></td>
+</tr>
+<tr>
+<td>-verbose:jni</td>
+<td></td>
+</tr>
+<tr>
+<td>-version</td>
+<td></td>
+</tr>
+<tr>
+<td>-version:release</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="Non-Standard-Options"><a href="#Non-Standard-Options" class="headerlink" title="Non-Standard Options"></a>Non-Standard Options</h2><table>
+<thead>
+<tr>
+<th>Option and Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-X</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xbatch</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xbootclasspath:path</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xbootclasspath/a:path</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xbootclasspath/p:path</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xcheck:jni</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xcomp</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xdebug</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xdiag</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xfuture</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xint</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xinternalversion</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xloggc:filename</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xmaxjitcodesize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xmixed</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xmnsize</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xmssize</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xmxsize</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xnoclassgc</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xprof</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xrs</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xshare:mode</td>
+<td></td>
+</tr>
+<tr>
+<td>-XshowSettings:category</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xsssize</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xusealtsigs</td>
+<td></td>
+</tr>
+<tr>
+<td>-Xverify:mode</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="Advanced-Runtime-Options"><a href="#Advanced-Runtime-Options" class="headerlink" title="Advanced Runtime Options"></a>Advanced Runtime Options</h2><table>
+<thead>
+<tr>
+<th>Option and Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-XX:+CheckEndorsedAndExtDirs</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+DisableAttachMechanism</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:ErrorFile=filename</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+FailOverToOldVerifier</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+FlightRecorder</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:-FlightRecorder</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:FlightRecorderOptions=<em>parameter</em>=value</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:LargePageSizeInBytes=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxDirectMemorySize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:NativeMemoryTracking=mode</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:ObjectAlignmentInBytes=alignment</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:OnError=string</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:OnOutOfMemoryError=string</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PerfDataSaveToFile</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:-PreferContainerQuotaForCPUCount</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintCommandLineFlags</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintContainerInfo</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintNMTStatistics</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+RelaxAccessControlCheck</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+ResourceManagement</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:ResourceManagementSampleInterval=value(milliseconds)</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:SharedArchiveFile=path</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:SharedClassListFile=file_name</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+ShowMessageBoxOnError</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:StartFlightRecording=parameter=value</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:ThreadStackSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+TraceClassLoading</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+TraceClassLoadingPreorder</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+TraceClassResolution</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+TraceClassUnloading</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+TraceLoaderConstraints</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UnlockCommercialFeatures</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseAltSigs</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseAppCDS</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:-UseBiasedLocking</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:-UseCompressedOops</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:-UseContainerSupport</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseHugeTLBFS</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseLargePages</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseMembar</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UsePerfData</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseTransparentHugePages</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+AllowUserSignalHandlers</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="Advanced-JIT-Compiler-Options"><a href="#Advanced-JIT-Compiler-Options" class="headerlink" title="Advanced JIT Compiler Options"></a>Advanced JIT Compiler Options</h2><table>
+<thead>
+<tr>
+<th>Option and Default Value</th>
+<th>Descritpion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-XX:+AggressiveOpts</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:AllocateInstancePrefetchLines=<em>lines</em></td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:AllocatePrefetchDistance=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:AllocatePrefetchInstr=instruction</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:AllocatePrefetchLines=lines</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:AllocatePrefetchStepSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:AllocatePrefetchStyle=style</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+BackgroundCompilation</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CICompilerCount=threads</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CodeCacheMinimumFreeSpace=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CompileCommand=command,method[,option]</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CompileCommandFile=filename</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CompileOnly=methods</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CompileThreshold=invocations</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+DoEscapeAnalysis</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:InitialCodeCacheSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+Inline</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:InlineSmallCode=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+LogCompilation</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxInlineSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxNodeLimit=nodes</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxTrivialSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+OptimizeStringConcat</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintAssembly</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintCompilation</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintInlining</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:ReservedCodeCacheSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:RTMAbortRatio=abort_ratio</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:RTMRetryCount=number_of_retries</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:-TieredCompilation</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseAES</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseAESIntrinsics</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseCodeCacheFlushing</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseCondCardMark</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseRTMDeopt</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseRTMLocking</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseSHA</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseSHA1Intrinsics</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseSHA256Intrinsics</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseSHA512Intrinsics</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseSuperWord</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="Advanced-Serviceability-Options"><a href="#Advanced-Serviceability-Options" class="headerlink" title="Advanced Serviceability Options"></a>Advanced Serviceability Options</h2><table>
+<thead>
+<tr>
+<th>Option and Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-XX:+ExtendedDTraceProbes</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+HeapDumpOnOutOfMemoryError</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:HeapDumpPath=path</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:LogFile=path</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintClassHistogram</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintConcurrentLocks</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UnlockDiagnosticVMOptions</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="Advanced-Garbage-Collection-Options"><a href="#Advanced-Garbage-Collection-Options" class="headerlink" title="Advanced Garbage Collection Options"></a>Advanced Garbage Collection Options</h2><table>
+<thead>
+<tr>
+<th>Option and Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-XX:ActiveProcessorCount=x</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+AggressiveHeap</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+AlwaysPreTouch</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+CMSClassUnloadingEnabled</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CMSExpAvgFactor=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CMSInitiatingOccupancyFraction=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+CMSScavengeBeforeRemark</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CMSTriggerRatio=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:ConcGCThreads=threads</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+DisableExplicitGC</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+ExplicitGCInvokesConcurrent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:G1HeapRegionSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+G1PrintHeapRegions</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:G1ReservePercent=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:InitialHeapSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:InitialRAMPercentage=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:InitialSurvivorRatio=ratio</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:InitiatingHeapOccupancyPercent=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxGCPauseMillis=time</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxHeapSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxHeapFreeRatio=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxMetaspaceSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxNewSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxRAMPercentage=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxTenuringThreshold=threshold</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MetaspaceSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MinHeapFreeRatio=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MinRAMPercentage=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:NewRatio=ratio</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:NewSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:ParallelGCThreads=threads</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+ParallelRefProcEnabled</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintAdaptiveSizePolicy</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintGC</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintGCApplicationConcurrentTime</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintGCApplicationStoppedTime</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintGCDateStamps</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintGCDetails</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintGCTaskTimeStamps</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintGCTimeStamps</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintStringDeduplicationStatistics</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+PrintTenuringDistribution</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+ScavengeBeforeFullGC</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:SoftRefLRUPolicyMSPerMB=time</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:StringDeduplicationAgeThreshold=threshold</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:SurvivorRatio=ratio</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:TargetSurvivorRatio=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:TLABSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseAdaptiveSizePolicy</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseCMSInitiatingOccupancyOnly</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseConcMarkSweepGC</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseG1GC</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseGCOverheadLimit</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseNUMA</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseParallelGC</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseParallelOldGC</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseParNewGC</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseSerialGC</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseSHM</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseStringDeduplication</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseTLAB</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="Deprecated-and-Removed-Options"><a href="#Deprecated-and-Removed-Options" class="headerlink" title="Deprecated and Removed Options"></a>Deprecated and Removed Options</h2><table>
+<thead>
+<tr>
+<th>-Xincgc</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-Xrunlibname</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CMSIncrementalDutyCycle=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CMSIncrementalDutyCycleMin=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+CMSIncrementalMode</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CMSIncrementalOffset=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+CMSIncrementalPacing</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CMSIncrementalSafetyFactor=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:CMSInitiatingPermOccupancyFraction=percent</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:MaxPermSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:PermSize=size</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseSplitVerifier</td>
+<td></td>
+</tr>
+<tr>
+<td>-XX:+UseStringCache</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>随时更新</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM-Paramters"><span class="toc-number">1.</span> <span class="toc-text">JVM  Paramters</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Standard-Options"><span class="toc-number">1.1.</span> <span class="toc-text">Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-Standard-Options"><span class="toc-number">1.2.</span> <span class="toc-text">Non-Standard Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Runtime-Options"><span class="toc-number">1.3.</span> <span class="toc-text">Advanced Runtime Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-JIT-Compiler-Options"><span class="toc-number">1.4.</span> <span class="toc-text">Advanced JIT Compiler Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Serviceability-Options"><span class="toc-number">1.5.</span> <span class="toc-text">Advanced Serviceability Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Garbage-Collection-Options"><span class="toc-number">1.6.</span> <span class="toc-text">Advanced Garbage Collection Options</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deprecated-and-Removed-Options"><span class="toc-number">1.7.</span> <span class="toc-text">Deprecated and Removed Options</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://invincibled.github.io/2020/08/10/JVM%20Parameters/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&text=JVM Parameters"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&title=JVM Parameters"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&is_video=false&description=JVM Parameters"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JVM Parameters&body=Check out this article: https://invincibled.github.io/2020/08/10/JVM%20Parameters/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&title=JVM Parameters"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&title=JVM Parameters"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&title=JVM Parameters"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&title=JVM Parameters"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&name=JVM Parameters&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://invincibled.github.io/2020/08/10/JVM%20Parameters/&t=JVM Parameters"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Invincibled
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
