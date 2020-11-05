@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Http Code 整理 HTTP状态码由三个十进制数字组成，第一个十进制数字定义了状态码的类型，后两个数字没有分类的作用。HTTP状态码共分为5种类型：    1** 信息，服务器收到请求，需要请求者继续执行操作     2** 成功，操作被成功接收并处理   3** 重定向，需要进一步的操作以完成请求   4** 客户端错误，请求包含语法错误或无法完成请求   5** 服务器错误，服务器在处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Http Code">
+<meta property="og:url" content="https://invincibled.github.io/2020/09/10/Http/index.html">
+<meta property="og:site_name" content="果哥分享">
+<meta property="og:description" content="Http Code 整理 HTTP状态码由三个十进制数字组成，第一个十进制数字定义了状态码的类型，后两个数字没有分类的作用。HTTP状态码共分为5种类型：    1** 信息，服务器收到请求，需要请求者继续执行操作     2** 成功，操作被成功接收并处理   3** 重定向，需要进一步的操作以完成请求   4** 客户端错误，请求包含语法错误或无法完成请求   5** 服务器错误，服务器在处理">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-10T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-09-10T00:00:00.000Z">
+<meta property="article:author" content="Invincibled">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Http Code</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/08/11/%E9%87%8D%E5%A4%8D%E6%8F%90%E4%BA%A4/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://invincibled.github.io/2020/09/10/Http/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://invincibled.github.io/2020/09/10/Http/&text=Http Code"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://invincibled.github.io/2020/09/10/Http/&title=Http Code"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://invincibled.github.io/2020/09/10/Http/&is_video=false&description=Http Code"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Http Code&body=Check out this article: https://invincibled.github.io/2020/09/10/Http/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://invincibled.github.io/2020/09/10/Http/&title=Http Code"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://invincibled.github.io/2020/09/10/Http/&title=Http Code"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://invincibled.github.io/2020/09/10/Http/&title=Http Code"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://invincibled.github.io/2020/09/10/Http/&title=Http Code"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://invincibled.github.io/2020/09/10/Http/&name=Http Code&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://invincibled.github.io/2020/09/10/Http/&t=Http Code"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Http Code 整理</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Http Code
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">果哥分享</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-09-10T00:00:00.000Z" itemprop="datePublished">2020-09-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1>Http Code 整理</h1>
+<p>HTTP状态码由三个十进制数字组成，第一个十进制数字定义了状态码的类型，后两个数字没有分类的作用。HTTP状态码共分为5种类型：</p>
+<table>
+<thead>
+<tr>
+<th>1**</th>
+<th>信息，服务器收到请求，需要请求者继续执行操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2**</td>
+<td>成功，操作被成功接收并处理</td>
+</tr>
+<tr>
+<td>3**</td>
+<td>重定向，需要进一步的操作以完成请求</td>
+</tr>
+<tr>
+<td>4**</td>
+<td>客户端错误，请求包含语法错误或无法完成请求</td>
+</tr>
+<tr>
+<td>5**</td>
+<td>服务器错误，服务器在处理请求的过程中发生了错误</td>
+</tr>
+</tbody>
+</table>
+<p>HTTP状态码列表:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">状态码</th>
+<th style="text-align:left">状态码英文名称</th>
+<th style="text-align:left">中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">100</td>
+<td style="text-align:left">Continue</td>
+<td style="text-align:left">继续。<a target="_blank" rel="noopener" href="http://www.dreamdu.com/webbuild/client_vs_server/">客户端</a>应继续其请求</td>
+</tr>
+<tr>
+<td style="text-align:left">101</td>
+<td style="text-align:left">Switching Protocols</td>
+<td style="text-align:left">切换协议。服务器根据客户端的请求切换协议。只能切换到更高级的协议，例如，切换到HTTP的新版本协议</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">200</td>
+<td style="text-align:left">OK</td>
+<td style="text-align:left">请求成功。一般用于GET与POST请求</td>
+</tr>
+<tr>
+<td style="text-align:left">201</td>
+<td style="text-align:left">Created</td>
+<td style="text-align:left">已创建。成功请求并创建了新的资源</td>
+</tr>
+<tr>
+<td style="text-align:left">202</td>
+<td style="text-align:left">Accepted</td>
+<td style="text-align:left">已接受。已经接受请求，但未处理完成</td>
+</tr>
+<tr>
+<td style="text-align:left">203</td>
+<td style="text-align:left">Non-Authoritative Information</td>
+<td style="text-align:left">非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本</td>
+</tr>
+<tr>
+<td style="text-align:left">204</td>
+<td style="text-align:left">No Content</td>
+<td style="text-align:left">无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档</td>
+</tr>
+<tr>
+<td style="text-align:left">205</td>
+<td style="text-align:left">Reset Content</td>
+<td style="text-align:left">重置内容。服务器处理成功，用户终端（例如：浏览器）应重置文档视图。可通过此返回码清除浏览器的表单域</td>
+</tr>
+<tr>
+<td style="text-align:left">206</td>
+<td style="text-align:left">Partial Content</td>
+<td style="text-align:left">部分内容。服务器成功处理了部分GET请求</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">300</td>
+<td style="text-align:left">Multiple Choices</td>
+<td style="text-align:left">多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择</td>
+</tr>
+<tr>
+<td style="text-align:left">301</td>
+<td style="text-align:left">Moved Permanently</td>
+<td style="text-align:left">永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替</td>
+</tr>
+<tr>
+<td style="text-align:left">302</td>
+<td style="text-align:left">Found</td>
+<td style="text-align:left">临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI</td>
+</tr>
+<tr>
+<td style="text-align:left">303</td>
+<td style="text-align:left">See Other</td>
+<td style="text-align:left">查看其它地址。与301类似。使用GET和POST请求查看</td>
+</tr>
+<tr>
+<td style="text-align:left">304</td>
+<td style="text-align:left">Not Modified</td>
+<td style="text-align:left">未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源</td>
+</tr>
+<tr>
+<td style="text-align:left">305</td>
+<td style="text-align:left">Use Proxy</td>
+<td style="text-align:left">使用代理。所请求的资源必须通过代理访问</td>
+</tr>
+<tr>
+<td style="text-align:left">306</td>
+<td style="text-align:left">Unused</td>
+<td style="text-align:left">已经被废弃的HTTP状态码</td>
+</tr>
+<tr>
+<td style="text-align:left">307</td>
+<td style="text-align:left">Temporary Redirect</td>
+<td style="text-align:left">临时重定向。与302类似。使用GET请求重定向</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">400</td>
+<td style="text-align:left">Bad Request</td>
+<td style="text-align:left">客户端请求的语法错误，服务器无法理解</td>
+</tr>
+<tr>
+<td style="text-align:left">401</td>
+<td style="text-align:left">Unauthorized</td>
+<td style="text-align:left">请求要求用户的身份认证</td>
+</tr>
+<tr>
+<td style="text-align:left">402</td>
+<td style="text-align:left">Payment Required</td>
+<td style="text-align:left">保留，将来使用</td>
+</tr>
+<tr>
+<td style="text-align:left">403</td>
+<td style="text-align:left">Forbidden</td>
+<td style="text-align:left">服务器理解请求客户端的请求，但是拒绝执行此请求</td>
+</tr>
+<tr>
+<td style="text-align:left">404</td>
+<td style="text-align:left">Not Found</td>
+<td style="text-align:left">服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置&quot;您所请求的资源无法找到&quot;的个性页面</td>
+</tr>
+<tr>
+<td style="text-align:left">405</td>
+<td style="text-align:left">Method Not Allowed</td>
+<td style="text-align:left">客户端请求中的方法被禁止</td>
+</tr>
+<tr>
+<td style="text-align:left">406</td>
+<td style="text-align:left">Not Acceptable</td>
+<td style="text-align:left">服务器无法根据客户端请求的内容特性完成请求</td>
+</tr>
+<tr>
+<td style="text-align:left">407</td>
+<td style="text-align:left">Proxy Authentication Required</td>
+<td style="text-align:left">请求要求代理的身份认证，与401类似，但请求者应当使用代理进行授权</td>
+</tr>
+<tr>
+<td style="text-align:left">408</td>
+<td style="text-align:left">Request Time-out</td>
+<td style="text-align:left">服务器等待客户端发送的请求时间过长，超时</td>
+</tr>
+<tr>
+<td style="text-align:left">409</td>
+<td style="text-align:left">Conflict</td>
+<td style="text-align:left">服务器完成客户端的 PUT 请求时可能返回此代码，服务器处理请求时发生了冲突</td>
+</tr>
+<tr>
+<td style="text-align:left">410</td>
+<td style="text-align:left">Gone</td>
+<td style="text-align:left">客户端请求的资源已经不存在。410不同于404，如果资源以前有现在被永久删除了可使用410代码，网站设计人员可通过301代码指定资源的新位置</td>
+</tr>
+<tr>
+<td style="text-align:left">411</td>
+<td style="text-align:left">Length Required</td>
+<td style="text-align:left">服务器无法处理客户端发送的不带Content-Length的请求信息</td>
+</tr>
+<tr>
+<td style="text-align:left">412</td>
+<td style="text-align:left">Precondition Failed</td>
+<td style="text-align:left">客户端请求信息的先决条件错误</td>
+</tr>
+<tr>
+<td style="text-align:left">413</td>
+<td style="text-align:left">Request Entity Too Large</td>
+<td style="text-align:left">由于请求的实体过大，服务器无法处理，因此拒绝请求。为防止客户端的连续请求，服务器可能会关闭连接。如果只是服务器暂时无法处理，则会包含一个Retry-After的响应信息</td>
+</tr>
+<tr>
+<td style="text-align:left">414</td>
+<td style="text-align:left">Request-URI Too Large</td>
+<td style="text-align:left">请求的URI过长（URI通常为网址），服务器无法处理</td>
+</tr>
+<tr>
+<td style="text-align:left">415</td>
+<td style="text-align:left">Unsupported Media Type</td>
+<td style="text-align:left">服务器无法处理请求附带的媒体格式</td>
+</tr>
+<tr>
+<td style="text-align:left">416</td>
+<td style="text-align:left">Requested range not satisfiable</td>
+<td style="text-align:left">客户端请求的范围无效</td>
+</tr>
+<tr>
+<td style="text-align:left">417</td>
+<td style="text-align:left">Expectation Failed</td>
+<td style="text-align:left">服务器无法满足Expect的请求头信息</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">500</td>
+<td style="text-align:left">Internal Server Error</td>
+<td style="text-align:left">服务器内部错误，无法完成请求</td>
+</tr>
+<tr>
+<td style="text-align:left">501</td>
+<td style="text-align:left">Not Implemented</td>
+<td style="text-align:left">服务器不支持请求的功能，无法完成请求</td>
+</tr>
+<tr>
+<td style="text-align:left">502</td>
+<td style="text-align:left">Bad Gateway</td>
+<td style="text-align:left">作为网关或者代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应</td>
+</tr>
+<tr>
+<td style="text-align:left">503</td>
+<td style="text-align:left">Service Unavailable</td>
+<td style="text-align:left">由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中</td>
+</tr>
+<tr>
+<td style="text-align:left">504</td>
+<td style="text-align:left">Gateway Time-out</td>
+<td style="text-align:left">充当网关或代理的服务器，未及时从远端服务器获取请求</td>
+</tr>
+<tr>
+<td style="text-align:left">505</td>
+<td style="text-align:left">HTTP Version not supported</td>
+<td style="text-align:left">服务器不支持请求的HTTP协议的版本，无法完成处理</td>
+</tr>
+</tbody>
+</table>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Http Code 整理</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://invincibled.github.io/2020/09/10/Http/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://invincibled.github.io/2020/09/10/Http/&text=Http Code"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://invincibled.github.io/2020/09/10/Http/&title=Http Code"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://invincibled.github.io/2020/09/10/Http/&is_video=false&description=Http Code"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Http Code&body=Check out this article: https://invincibled.github.io/2020/09/10/Http/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://invincibled.github.io/2020/09/10/Http/&title=Http Code"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://invincibled.github.io/2020/09/10/Http/&title=Http Code"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://invincibled.github.io/2020/09/10/Http/&title=Http Code"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://invincibled.github.io/2020/09/10/Http/&title=Http Code"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://invincibled.github.io/2020/09/10/Http/&name=Http Code&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://invincibled.github.io/2020/09/10/Http/&t=Http Code"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2020
+    Invincibled
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a href="/projects_url">项目</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
